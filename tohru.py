@@ -25,9 +25,9 @@ async def on_ready():
 async def background_loop():
     await client.wait_until_ready()
     while not client.is_closed:
-        channel = client.get_channel("345351749621645313")
-        channel2 = client.get_channel("492425067230265344")
-        messages = ["https://thicc.moe/Bb7u8xYY9uKOBPtoPgCpPKcgamt7N8ys.jpg", "https://thicc.moe/hEPEZQ9ufQOIQgkRjueKyQSRBUsgiluQ.jpg", "https://thicc.moe/lpln0LJiw2G3UqdUnmwID99kvEL2Ntry1.jpg", "https://thicc.moe/8PWWL0fPGHaqMk0enffu00JDyQzAY5Xo.jpg", "https://thicc.moe/Hbd0TTrXb6fwIdZFnluMsQMnNpn81r1X.png", "https://thicc.moe/6GiUPeb6QYnN1c8gWHzMNwCj7VlEeXJp.png"]
+        channel = client.get_channel("")
+        channel2 = client.get_channel("")
+        messages = [""]
         await client.send_message(channel, random.choice(messages))
         await client.send_message(channel2, random.choice(messages))
         await asyncio.sleep(720)
