@@ -21,6 +21,14 @@ client = commands.Bot(command_prefix=bot_prefix)
 async def on_ready():
     await client.change_presence(game=discord.Game(name='Ask for !help'))
 
+#Tohru sends a random image once per day
+async def background_loop():
+    await client.wait_until_ready()
+    while not client.is_closed:
+        messages = ["https://thicc.moe/Bb7u8xYY9uKOBPtoPgCpPKcgamt7N8ys.jpg", "https://thicc.moe/hEPEZQ9ufQOIQgkRjueKyQSRBUsgiluQ.jpg", "https://thicc.moe/lplnLJiw2G3UqdUnmwID99kvEL2Ntry1.jpg", "https://thicc.moe/8PWWL0fPGHaqMk0enffu00JDyQzAY5Xo.jpg", "https://thicc.moe/Hbd0TTrXb6fwIdZFnluMsQMnNpn81r1X.png", "https://thicc.moe/6GiUPeb6QYnN1c8gWHzMNwCj7VlEeXJp.png", "https://thicc.moe/DKL1xPgfD16HkcxIkFMLVcusv1k2KaP8.jpg"]
+        await client.send_message(channel, random.choice(messages))
+        await asyncio.sleep(1440)
+
 #Tohru replies. Main source of interaction!
 @client.event
 async def on_message(message):
@@ -153,6 +161,10 @@ async def on_message(message):
     if "hungry" in message.content:
     	msg = ['https://imgur.com/RZqBCRv', 'https://imgur.com/7zfQasF', 'https://imgur.com/l3vqO0b', 'https://imgur.com/n6gTPJe', 'https://imgur.com/THDlMcH', 'https://imgur.com/j9SLCCa']
     	await client.send_message(message.channel, random.choice(msg))
-		
-
+	
+    if "food" in message.content:
+    	msg = ['https://imgur.com/RZqBCRv', 'https://imgur.com/7zfQasF', 'https://imgur.com/l3vqO0b', 'https://imgur.com/n6gTPJe', 'https://imgur.com/THDlMcH', 'https://imgur.com/j9SLCCa']
+    	await client.send_message(message.channel, random.choice(msg))
+	
+client.loop.create_task(background_loop())	
 client.run("")
